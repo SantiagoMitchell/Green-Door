@@ -1,25 +1,48 @@
-html>
-    <head>
-      <style>
-        table, th, td {
-          border: 1px solid black;
-          border-collapse: collapse;
-        }
-        th, td {
-          padding: 5px;
-        }
-        th {
-          text-align: left;
-        }
-        </style>
-        <title></title>
-    </head>
-
-    <body>
-        <hr>
-        <div>
-        </div>
-        <hr>
-        {% block content %}{% endblock %}
-    </body>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Green Door</title>
+    <style>
+      body {
+        background-color: lightgreen;
+        font-family: Arial, sans-serif;
+      }
+      h1 {
+        font-size: 36px;
+        color: black;
+        text-align: center;
+        margin: 20px;
+      }
+      .navbar {
+        background-color: darkgreen;
+        overflow: hidden;
+      }
+      .navbar a {
+        float: left;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 18px;
+      }
+      .navbar a:hover {
+        background-color: lightgreen;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Green Door</h1>
+    <div class="navbar">
+      <a href="#about">About</a>
+      <a href="#sites">Sites</a>
+      <a href="#hotels">Hotels</a>
+      <a href="#clothing">Clothing</a>
+      <a href="#food">Food</a>
+      <a href="#login">Login</a>
+    </div>
+    <div class="content">
+      <!-- your content here -->
+    </div>
+  </body>
 </html>
