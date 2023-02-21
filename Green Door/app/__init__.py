@@ -10,13 +10,13 @@ import mysql.connector
 load_dotenv('.flaskenv')
 
 # Get the environment variables from .flaskenv
-IP = environ.get('MYSQL_IP')
-USERNAME = environ.get('MYSQL_USER')
-PASSWORD = environ.get('MYSQL_PASS')
-DB_NAME = environ.get('MYSQL_DB')
+IP = environ.get('34.173.53.247')
+USERNAME = environ.get('csc-400')
+PASSWORD = environ.get('Tenclams98')
+DB_NAME = environ.get('GreenDoor')
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'csc33O'
+app.config['SECRET_KEY'] = 'csc330'
 
 # Specify the connection parameters/credentials for the database
 DB_CONFIG_STR = f"mysql+mysqlconnector://{USERNAME}:{PASSWORD}@{IP}/{DB_NAME}"
@@ -27,4 +27,4 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"]= True
 db = SQLAlchemy(app)
 
 # Add models
-from app import routes, models
+from app import routes
