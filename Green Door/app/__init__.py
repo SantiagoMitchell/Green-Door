@@ -1,8 +1,8 @@
 from flask import Flask
-from flask_login import LogManager
 
 # New imports
 from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager
 from dotenv import load_dotenv
 from os import environ
 import mysql.connector
@@ -26,12 +26,13 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"]= True
 
 # Create database connection and associate it with the Flask application
 db = SQLAlchemy(app)
-login = LogManager(app)
+login = LoginManager(app)
 
-
-login.login_viewManager = 'login'
+login.login_view= 'login'
 # Add models
 from app import routes, models
+
+
 
 user = User.query.filter_by(username='admin').first()
 if user is None:
