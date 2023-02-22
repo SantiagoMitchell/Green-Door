@@ -44,17 +44,16 @@ def register():
         if form.validate_on_submit():
             user = User.query.filter_by(username=form.username.data).first()
             if user is None:
-                First_name = form.first_name.data
+                first_name = form.first_name.data
                 Last_name = form.last_name.data
                 username = form.username.data
                 email = form.email.data
-                password = request.form['password']
+                password_hash = request.form['password']
                 role = 'user'
-                user = User(First_name=First_name, Last_name=Last_name, email=email, username=username, role=role)
+                user = User(First_name=First_name, Last_name=Last_name, email=email, username=username)
                 user.set_password(password)
                 db.session.add(user)
                 user = db.session.query(User).filter_by(username=form.username.data).first()
-                userID = user.username
                 return render_template('registerSuccess.html')
         else:
             return render_template('unsuccessfulLogin.html', form=form)
