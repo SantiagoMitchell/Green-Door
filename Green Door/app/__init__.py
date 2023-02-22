@@ -16,7 +16,7 @@ PASSWORD = environ.get('Tenclams98')
 DB_NAME = environ.get('GreenDoor')
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'csc330'
+app.config['SECRET_KEY'] = 'csc400'
 
 # Specify the connection parameters/credentials for the database
 DB_CONFIG_STR = f"mysql+mysqlconnector://{USERNAME}:{PASSWORD}@{IP}/{DB_NAME}"
