@@ -33,9 +33,11 @@ def login():
             return redirect(url_for('loginSuccess'))
     return render_template('login.html', form=form)
 
-    @app.route('/register', methods=['GET', 'POST'])
+    
+@app.route('/register', methods=['GET', 'POST'])
 
 def register():
+    
     form = RegisterForm()
     if request.method== 'POST':
         if form.validate_on_submit():

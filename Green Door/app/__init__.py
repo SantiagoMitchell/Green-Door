@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_login import LogManager
 
 # New imports
 from flask_sqlalchemy import SQLAlchemy
@@ -25,6 +26,27 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"]= True
 
 # Create database connection and associate it with the Flask application
 db = SQLAlchemy(app)
+login = LogManager(app)
 
+
+login.login_viewManager = 'login'
 # Add models
-from app import routes
+from app import routes, models
+
+user = User.query.filter_by(username='admin').first()
+if user is None:
+    user_admin = User(username='admin', role='admin')
+    user_admin.set_password('csc400')
+    db.session.add(user_admin)
+    db.session.commit()
+
+
+user = User.query.filter_by(username='user').first()
+if user is None:
+    username = 'user'
+    reg_user = User(username='user', role = 'user')
+    reg_user.set_password('csc400')
+    db.session.add(reg_user)
+    member = Member(member_id=username, group_id=None, eval_id=None)
+    db.session.add(member)
+    db.session.commit()
