@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<title>Login</title>
+
+
+<div class="box">
+<h1> Login Here</h1>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <h3> Invalid Username or Password <br>
+            Try again </h3>
+        <p>
+            {{ form.username.label(style='font-size: 21px;') }}<br>
+            {{ form.username(size=32, style='height: 26px;') }}
+        </p>
+        <p>
+            {{ form.password.label(style='font-size: 21px;') }}<br>
+            {{ form.password(size=32, style='height: 26px;') }}
+        </p>
+        <p>{{ form.submit}}</p>
+
+        <p><a href="/register">Need an Account</a></p>
+    </form>
+</div>
+{% endblock %}
