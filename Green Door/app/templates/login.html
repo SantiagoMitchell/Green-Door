@@ -1,11 +1,41 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <form class="login" action="#" method="post">
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="username"><br><br>
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password"><br><br>
-    <input type="submit" value="Login">
-  </form>
+<head>
+<title>Login</title>
+
+<script>
+    function myFunction() {
+      var x = document.getElementById("myInput");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+    }
+
+</script>
+</head>
+
+
+<div class="box">
+<h1> Login Here</h1>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.username.label(style='font-size: 22px;') }}<br>
+            {{ form.username(size=30, style='height: 28px;') }}
+        </p>
+        <p>
+            {{ form.password.label(style='font-size: 22px;') }}<br>
+            <input type="password" name="password" value="" id="myInput" size=30, style='height: 28px'><br><br>
+            <input type="checkbox" onclick="myFunction()">Show Password
+            
+        </p>
+        
+        <p>{{ (form.submit) }}</p>
+
+        <p><a href="/register">Need an Account?</a></p>
+    </form>
+</div>
 {% endblock %}

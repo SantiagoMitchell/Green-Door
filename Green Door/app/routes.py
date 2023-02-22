@@ -57,7 +57,7 @@ def register():
                 userID = user.username
                 return render_template('registerSuccess.html')
         else:
-            return render_template('unsuccessfulRegister.html', form=form)
+            return render_template('unsuccessfulLogin.html', form=form)
     return render_template('register.html', form=form)
 
 @app.route('/logout')
