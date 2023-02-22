@@ -6,6 +6,7 @@ from sqlalchemy import func
 from werkzeug.security import check_password_hash, generate_password_hash
 from app.forms import LoginForm, RegisterForm
 from app.forms import LoginForm, RegisterForm
+from app import db
 from app.models import User
 import sys
 

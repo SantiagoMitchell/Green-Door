@@ -32,22 +32,3 @@ login.login_view= 'login'
 # Add models
 from app import routes, models
 
-
-
-user = User.query.filter_by(username='admin').first()
-if user is None:
-    user_admin = User(username='admin', role='admin')
-    user_admin.set_password('csc400')
-    db.session.add(user_admin)
-    db.session.commit()
-
-
-user = User.query.filter_by(username='user').first()
-if user is None:
-    username = 'user'
-    reg_user = User(username='user', role = 'user')
-    reg_user.set_password('csc400')
-    db.session.add(reg_user)
-    member = Member(member_id=username, group_id=None, eval_id=None)
-    db.session.add(member)
-    db.session.commit()
