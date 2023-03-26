@@ -8,6 +8,7 @@ from app.forms import LoginForm, RegisterForm
 from app.forms import LoginForm, RegisterForm
 from app import db
 from app.models import User
+import datetime
 import sys
 
 
@@ -22,41 +23,36 @@ def login():
         return redirect(url_for('loginSuccess'))
     form = LoginForm()
     if form.validate_on_submit():
-        user = db.session.query(User).filter_by(username=form.username.data).first()
-        password = request.form['password']
-        valid_password = check_password_hash(user.password_hash, password)
-        if user is None or not valid_password:
-            print('Login failed', file=sys.stderr)
+        user = User.query.filter_by(username=form.username.data).first()
+        if user is None or not check_password_hash(user.password_hash, form.password.data):
+            print('Login failed')
             return render_template('unsuccessfulLogin.html', form=form)
         else:
             login_user(user)
-            print('Login successful', file=sys.stderr)
+            print('Login successful')
             return redirect(url_for('loginSuccess'))
     return render_template('login.html', form=form)
 
-    
-@app.route('/register', methods=['GET', 'POST'])
 
+@app.route('/register', methods=['GET', 'POST'])
 def register():
-    
     form = RegisterForm()
-    if request.method== 'POST':
-        if form.validate_on_submit():
-            user = User.query.filter_by(username=form.username.data).first()
-            if user is None:
-                first_name = form.first_name.data
-                Last_name = form.last_name.data
-                username = form.username.data
-                email = form.email.data
-                password_hash = request.form['password']
-                role = 'user'
-                user = User(First_name=First_name, Last_name=Last_name, email=email, username=username)
-                user.set_password(password)
-                db.session.add(user)
-                user = db.session.query(User).filter_by(username=form.username.data).first()
-                return render_template('registerSuccess.html')
-        else:
-            return render_template('unsuccessfulLogin.html', form=form)
+    if form.validate_on_submit():
+        user = User.query.filter_by(username=form.username.data).first()
+        if user is None:
+            first_name = form.first_name.data
+            last_name = form.last_name.data
+            email = form.email.data
+            username = form.username.data
+            password = request.form['password']
+            role = 'user'
+            user = User(first_name=first_name, last_name=last_name, email=email, username=username, role='user')
+            user.set_password(password)
+            db.session.add(user)
+            db.session.commit()
+            return render_template('registerSuccess.html')
+        if user is not None:
+            return render_template('unsuccessfulRegister.html', form=form)
     return render_template('register.html', form=form)
 
 @app.route('/logout')
