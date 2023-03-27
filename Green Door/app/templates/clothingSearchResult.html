@@ -1,5 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-		
+		<table>
+			<tr>
+				<th>Name</th>
+				<th>Description</th>
+			</tr>
+			{% for name in clothing %}
+			<tr>
+				<td>{{name.name}}</td>
+				<td>{{name.description}}</td>
+			</tr>
+			{% endfor %}
 {% endblock %}

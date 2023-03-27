@@ -21,13 +21,12 @@ class User(UserMixin, db.Model):
     def check_password(self, pwd):
         return check_password_hash(self.password, pwd)
 
-
 class Food(db.Model):
     __tablename__ = 'foods'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50))
     description = db.Column(db.Text)
-    image_url = db.Column(db.String(200))
+    website_url = db.Column(db.String(200))
     price = db.Column(db.Float)
 
 
@@ -36,7 +35,7 @@ class Clothing(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50))
     description = db.Column(db.Text)
-    image_url = db.Column(db.String(200))
+    website_url = db.Column(db.String(200))
     price = db.Column(db.Float)
 
 
@@ -45,7 +44,7 @@ class Hotel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50))
     description = db.Column(db.Text)
-    image_url = db.Column(db.String(200))
+    website_url = db.Column(db.String(200))
     price = db.Column(db.Float)
 
 
@@ -56,9 +55,8 @@ class Car(db.Model):
     model = db.Column(db.String(50))
     year = db.Column(db.Integer)
     description = db.Column(db.Text)
-    image_url = db.Column(db.String(200))
+    website_url = db.Column(db.String(200))
     price = db.Column(db.Float)
-
 
 @login.user_loader
 def load_user(id):

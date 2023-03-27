@@ -4,10 +4,10 @@ from flask_login import login_user, logout_user, login_required, current_user
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import func
 from werkzeug.security import check_password_hash, generate_password_hash
-from app.forms import LoginForm, RegisterForm
-from app.forms import LoginForm, RegisterForm
+from app.forms import LoginForm, RegisterForm, SearchForm
+from app.forms import LoginForm, RegisterForm, SearchForm
 from app import db
-from app.models import User
+from app.models import User, Food, Clothing, Hotel, Car
 import datetime
 import sys
 
@@ -67,9 +67,17 @@ def hello():
 def about():
     return render_template('about.html')
 
-@app.route('/clothingSearchHome')
+@app.route('/clothingSearchHome', methods=['GET', 'POST'])
 def clothingsearchhome():
-    return render_template('clothingSearchHome.html')
+    form = SearchForm()
+    if form.validate_on_submit():
+        # Query DB table for matching name
+        record = db.session.query(Clothing).filter_by(name = form.name.data).all()
+        if record:
+            return render_template('clothingSearchResult.html', clothing=record)
+        else:
+            return render_template('about.html')
+    return render_template('clothingSearchHome.html', form=form)
 
 @app.route('/clothingSearchResult')
 def clothingsearchresult():
@@ -77,7 +85,15 @@ def clothingsearchresult():
 
 @app.route('/foodSearchHome')
 def foodsearchhome():
-    return render_template('foodSearchHome.html')
+    form = SearchForm()
+    if form.validate_on_submit():
+        # Query DB table for matching name
+        record = db.session.query(Food).filter_by(name = form.name.data).all()
+        if record:
+            return render_template('foodSearchResult.html', foods=record)
+        else:
+            return render_template('about.html')
+    return render_template('foodSearchHome.html', form=form)
 
 @app.route('/foodSearchResult')
 def foodsearchresult():
@@ -85,7 +101,15 @@ def foodsearchresult():
 
 @app.route('/hotelSearchHome')
 def hotelsearchhome():
-    return render_template('hotelSearchHome.html')
+    form = SearchForm()
+    if form.validate_on_submit():
+        # Query DB table for matching name
+        record = db.session.query(Hotel).filter_by(name = form.name.data).all()
+        if record:
+            return render_template('hotelSearchResult.html', hotels=record)
+        else:
+            return render_template('about.html')
+    return render_template('hotelSearchHome.html', form=form)
 
 @app.route('/hotelSearchResult')
 def hotelsearchresult():
@@ -95,11 +119,19 @@ def hotelsearchresult():
 def profile():
     return render_template('profile.html')
 
-@app.route('/siteSearchHome')
-def sitesearchhome():
-    return render_template('siteSearchHome.html')
+@app.route('/carSearchHome')
+def carsearchhome():
+    form = SearchForm()
+    if form.validate_on_submit():
+        # Query DB table for matching name
+        record = db.session.query(Car).filter_by(name = form.name.data).all()
+        if record:
+            return render_template('carSearchResult.html', clothing=record)
+        else:
+            return render_template('about.html')
+    return render_template('carSearchHome.html', form=form)
 
-@app.route('/siteSearchResults')
-def sitesearchresult():
-    return render_template('siteSearchResults.html')
+@app.route('/carSearchResults')
+def carsearchresult():
+    return render_template('carSearchResult.html')
 

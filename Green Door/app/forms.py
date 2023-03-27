@@ -16,3 +16,8 @@ class RegisterForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     show_password = BooleanField('Show password')
     submit = SubmitField("Submit")
+
+class SearchForm(FlaskForm):
+    name = StringField('search', validators=[DataRequired()])
+    submit = SubmitField("Submit")
+    
