@@ -23,16 +23,15 @@ def login():
         return redirect(url_for('loginSuccess'))
     form = LoginForm()
     if form.validate_on_submit():
-        user = User.query.filter_by(username=form.username.data).first()
-        if user is None or not check_password_hash(user.password_hash, form.password.data):
-            print('Login failed')
-            return render_template('unsuccessfulLogin.html', form=form)
-        else:
+        user = User.query.filter_by(username=form.username.data, password=form.password.data).first()
+        if user:
             login_user(user)
             print('Login successful')
-            return redirect(url_for('loginSuccess'))
+            return render_template('loginSuccess.html', form=form)
+        else:
+            print('Login failed')
+            return render_template('unsuccessfulLogin.html', form=form)
     return render_template('login.html', form=form)
-
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -44,10 +43,9 @@ def register():
             last_name = form.last_name.data
             email = form.email.data
             username = form.username.data
-            password = request.form['password']
+            password = form.password.data
             role = 'user'
-            user = User(first_name=first_name, last_name=last_name, email=email, username=username, role='user')
-            user.set_password(password)
+            user = User(first_name=first_name, last_name=last_name, password=password, email=email, username=username, role='user')
             db.session.add(user)
             db.session.commit()
             return render_template('registerSuccess.html')

@@ -7,16 +7,19 @@ class User(UserMixin, db.Model):
     __tablename__ = 'users'
     first_name = db.Column(db.String(20))
     last_name = db.Column(db.String(20))
-    username = db.Column(db.String(30), primary_key=True)
+    username = db.Column(db.String(30), unique=True, primary_key=True)
     role = db.Column(db.String(64))
     email = db.Column(db.String(30), unique=True)
     password = db.Column(db.String(128))
 
+    def get_id(self):
+        return str(self.username)
+
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
 
-    def check_password(self, password):
-        return check_password_hash(self.password_hash, password)
+    def check_password(self, pwd):
+        return check_password_hash(self.password, pwd)
 
 
 class Food(db.Model):
@@ -59,4 +62,4 @@ class Car(db.Model):
 
 @login.user_loader
 def load_user(id):
-    return User.query.get(int(id))
+    return User.query.get(id)
