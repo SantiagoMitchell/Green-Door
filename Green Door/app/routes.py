@@ -83,7 +83,7 @@ def clothingsearchhome():
 def clothingsearchresult():
     return render_template('clothingSearchResult.html')
 
-@app.route('/foodSearchHome')
+@app.route('/foodSearchHome', methods=['GET', 'POST'])
 def foodsearchhome():
     form = SearchForm()
     if form.validate_on_submit():
@@ -99,7 +99,7 @@ def foodsearchhome():
 def foodsearchresult():
     return render_template('foodSearchResult.html')
 
-@app.route('/hotelSearchHome')
+@app.route('/hotelSearchHome', methods=['GET', 'POST'])
 def hotelsearchhome():
     form = SearchForm()
     if form.validate_on_submit():
@@ -119,14 +119,14 @@ def hotelsearchresult():
 def profile():
     return render_template('profile.html')
 
-@app.route('/carSearchHome')
+@app.route('/carSearchHome', methods=['GET', 'POST'])
 def carsearchhome():
     form = SearchForm()
     if form.validate_on_submit():
         # Query DB table for matching name
         record = db.session.query(Car).filter_by(name = form.name.data).all()
         if record:
-            return render_template('carSearchResult.html', clothing=record)
+            return render_template('carSearchResult.html', cars=record)
         else:
             return render_template('about.html')
     return render_template('carSearchHome.html', form=form)

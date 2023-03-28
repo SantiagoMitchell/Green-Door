@@ -3,13 +3,22 @@
 {% block content %}
 		<table>
 			<tr>
-				<th>Name</th>
+				<th>Make</th>
+				<th>Model</th>
+				<th>Year</th>
+				<th>Price</th>
 				<th>Description</th>
+				<th>Website</th>
 			</tr>
 			{% for name in cars %}
 			<tr>
+				<td>{{name.make}}</td>
 				<td>{{name.name}}</td>
+				<td>{{name.year}}</td>
+				<td>{{name.price}}</td>
 				<td>{{name.description}}</td>
+				<td>{{name.website_url}}</td>
 			</tr>
-			{% endfor %}
+		</table>
+		{% endfor %}
 {% endblock %}

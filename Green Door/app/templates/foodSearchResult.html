@@ -4,12 +4,17 @@
 		<table>
 			<tr>
 				<th>Name</th>
+				<th>Price</th>
 				<th>Description</th>
+				<th>Website</th>
 			</tr>
 			{% for name in foods %}
 			<tr>
 				<td>{{name.name}}</td>
+				<td>{{name.price}}</td>
 				<td>{{name.description}}</td>
+				<td>{{name.website_url}}</td>
 			</tr>
+		</table>
 			{% endfor %}
 {% endblock %}
