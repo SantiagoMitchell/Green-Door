@@ -2,32 +2,28 @@
 
 {% block content %}
 <style>
+.image-wrapper {
+	box-sizing:border-box;
+	float: left;
+	margin-bottom: 5px;
+	width: 50%;
+}
+.btn {
+  border: none; /* Remove borders */
+  color: white; /* Add a text color */
+  padding: 14px 28px; /* Add some padding */
+  cursor: pointer; /* Add a pointer cursor on mouse-over */
+}
+.success {background-color: #04AA6D;} /* Green */
+.success:hover {background-color: #46a049;}
 
-
-
-    .image-wrapper {
-        box-sizing:border-box;
-        float: left;
-        margin-bottom: 5px;
-        width: 50%;
-    }
-    .btn {
-      border: none; /* Remove borders */
-      color: white; /* Add a text color */
-      padding: 14px 28px; /* Add some padding */
-      cursor: pointer; /* Add a pointer cursor on mouse-over */
-    }
-    .success {background-color: #04AA6D;} /* Green */
-    .success:hover {background-color: #46a049;}
-    
-    .default {background-color: #e7e7e7; color: black;} /* Gray */ 
-    .default:hover {background: #ddd;}
-    
+.default {background-color: #e7e7e7; color: black;} /* Gray */ 
+.default:hover {background: #ddd;}
     
     </style>
 <h1>Cars</h1>
 
-<h2>Input info</h2>
+<h2>Search for a car</h2>
 <form action="" method="post" novalidate>
     {{ form.hidden_tag() }}
     <p>
@@ -37,21 +33,32 @@
     <p>{{ form.submit() }}</p>
 </form>
 <body>
-
     <br>
     <div class="image-wrapper">
-        <img src="https://cdn.motor1.com/images/mgl/jpZ37/s3/mercedes-amg-e-53-coupe-2020.jpg"
+        <a href="https://www.tesla.com" target="_blank"><img src="https://electrek.co/wp-content/uploads/sites/3/2021/05/Tesla-Logo-Hero.jpg?quality=82&strip=all&w=1024"
              style="width: 300px; height:200px;"></a>
         <br>
-        <button class="btn success">Mercedes</button></a>
+        <a href="https://www.tesla.com" target="_blank"><button class="btn success">Tesla</button></a>
     </div>
-   
     <div class="image-wrapper">
-        <img src="https://images.dealer.com/ddc/vehicles/2023/Acura/Integra/Hatchback/trim_ASpec_Package_38609d/color/Platinum%20White%20Pearl-WV-217%2C219%2C214-640-en_US.jpg?impolicy=downsize_bkpt&imdensity=1&w=520"
+        <a href="https://www.jeep.com/grand-cherokee/grand-cherokee-4xe.html" target="_blank"><img src="https://d1lss44hh2trtw.cloudfront.net/assets/article/2021/09/29/jeep-reveals-its-first-plug-in-hybrid-electric-grand-cherokee-suv_feature.jpg"
              style="width: 300px; height:200px;"></a>
         <br>
-        <button class="btn success">Acura</button></a>
+        <a href="https://www.jeep.com/grand-cherokee/grand-cherokee-4xe.html" target="_blank"><button class="btn success">Jeep Grand Cherokee-4xe</button></a>
     </div>
+
+    <div class="image-wrapper" style="margin-top: 25px;">
+        <a href="https://www.chevrolet.com/electric/equinox-ev" target="_blank"><img src="https://www.chevrolet.com/electric/s3/uploads/chevrolet/2023_equinox_ev_masthead_01_176e8f3e99.jpg" 
+            style="width: 300px; height:200px;"></a>
+        <br>
+        <a href="https://www.chevrolet.com/electric/equinox-ev" target="_blank"><button class="btn success">Chevrolet Equinox-ev</button></a>
+    </div>
+    <div class="image-wrapper" style="margin-top: 25px">
+        <a href="https://www.ford.com/suvs/mach-e/" target="_blank"><img src="https://media.ford.com/content/fordmedia/fna/us/en/products/evs/mustang-mach-e/mustang-mach-e/jcr:content/content/media-section-parsys/textimage_f597/image.img.951.535.jpg/1608221793793.jpg"
+            style="width: 300px; height:200px;"></a>
+        <br>
+        <a href="https://www.ford.com/suvs/mach-e/" target="_blank"><button class="btn success">Ford Mustang-mach-e</button></a>
+    </div>    
 
 
 </body>

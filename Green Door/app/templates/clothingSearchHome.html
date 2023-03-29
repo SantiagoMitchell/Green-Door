@@ -1,9 +1,32 @@
 {% extends "base.html" %}
 
-
 {% block content %}
+<style>
+
+
+
+    .image-wrapper {
+        box-sizing:border-box;
+        float: left;
+        margin-bottom: 5px;
+        width: 50%;
+    }
+    .btn {
+      border: none; /* Remove borders */
+      color: white; /* Add a text color */
+      padding: 14px 28px; /* Add some padding */
+      cursor: pointer; /* Add a pointer cursor on mouse-over */
+    }
+    .success {background-color: #04AA6D;} /* Green */
+    .success:hover {background-color: #46a049;}
+    
+    .default {background-color: #e7e7e7; color: black;} /* Gray */ 
+    .default:hover {background: #ddd;}
+    
+    
+    </style>
 <h1>Clothing</h1>
-<h2>Input info</h2>
+<h2>Search for cloth</h2>
 <form action="" method="post" novalidate>
     {{ form.hidden_tag() }}
     <p>
@@ -12,4 +35,31 @@
     </p>
     <p>{{ form.submit() }}</p>
 </form>
+<br>
+		<div class="image-wrapper">
+			<a href="https://www.walmart.com/search?q=mens+jeans" target="_blank"><img src="https://hip2save.com/wp-content/uploads/2020/11/Wrangler-Mens-Jeans.jpg"
+				 style="width: 300px; height:200px;"></a>
+			<br>
+			<a href="https://www.walmart.com/search?q=mens+jeans" target="_blank"><button class="btn success">Men's Jeans</button></a>
+		</div>
+		<div class="image-wrapper">
+			<a href="https://www.walmart.com/search?q=Women+Dresses" target="_blank"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQb7W7kJc9OYybDPcGGHDlPqRd6woWJF7aNOQ&usqp=CAU"
+				 style="width: 300px; height:200px;"></a>
+			<br>
+			<a href="https://www.walmart.com/search?q=Women+Dresses" target="_blank"><button class="btn success">Women's Dresses</button></a>
+		</div>
+
+		<div class="image-wrapper" style="margin-top: 25px;">
+			<a href="https://www.walmart.com/search?q=boys+shirt" target="_blank"><img src="https://i5.walmartimages.com/asr/5d4c60a7-96ef-43d4-8726-eec7c817b9cd_1.d813ea82cc300dd349b0b82ad145d3d2.jpeg" 
+				style="width: 300px; height:200px;"></a>
+			<br>
+			<a href="https://www.walmart.com/search?q=boys+shirt" target="_blank"><button class="btn success">Boys Shirt</button></a>
+		</div>
+		<div class="image-wrapper" style="margin-top: 25px">
+			<a href="https://www.walmart.com/search?q=girls+skirt" target="_blank"><img src="https://i5.walmartimages.com/asr/48c5d729-11e5-440a-8cd9-3a18ba98d655_1.632ad3c02ab9dc75405c58b7fb0568ab.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF" 
+				style="width: 300px; height:200px;"></a>
+			<br>
+			<a href="https://www.walmart.com/search?q=girls+skirt" target="_blank"><button class="btn success">Girls Skirt</button></a>
+		</div>
+	
 {% endblock %}

@@ -2,8 +2,29 @@
 
 
 {% block content %}
+
+<style>
+    .image-wrapper {
+        box-sizing:border-box;
+        float: left;
+        margin-bottom: 5px;
+        width: 50%;
+    }
+    .btn {
+      border: none; /* Remove borders */
+      color: white; /* Add a text color */
+      padding: 14px 28px; /* Add some padding */
+      cursor: pointer; /* Add a pointer cursor on mouse-over */
+    }
+    .success {background-color: #04AA6D;} /* Green */
+    .success:hover {background-color: #46a049;}
+    
+    .default {background-color: #e7e7e7; color: black;} /* Gray */ 
+    .default:hover {background: #ddd;}
+        
+        </style>
 <h1>Hotels</h1>
-<h2>Input info</h2>
+<h2>Search for a hotel</h2>
 <form action="" method="post" novalidate>
     {{ form.hidden_tag() }}
     <p>
@@ -12,4 +33,34 @@
     </p>
     <p>{{ form.submit() }}</p>
 </form>
+<body>
+    <br>
+    <div class="image-wrapper">
+        <a href="https://www.hilton.com" target="_blank"><img src="https://pix10.agoda.net/hotelImages/564/5641/5641_16062302430043992737.jpg?ca=6&ce=1&s=1024x768"
+             style="width: 300px; height:200px;"></a>
+        <br>
+        <a href="https://www.hilton.com" target="_blank"><button class="btn success">Hilton San Francisco</button></a>
+    </div>
+    <div class="image-wrapper">
+        <a href="https://www.marriott.com" target="_blank"><img src="https://ik.imgkit.net/3vlqs5axxjf/external/http://www.cfmedia.vfmleonardo.com/imageRepo/7/0/150/580/560/bosco-exterior-9687-hor-clsc_O.jpg?tr=w-1200%2Cfo-auto"
+             style="width: 300px; height:200px;"></a>
+        <br>
+        <a href="https://www.marriott.com" target="_blank"><button class="btn success">Marriott Boston</button></a>
+    </div>
+
+    <div class="image-wrapper" style="margin-top: 25px;">
+        <a href="https://www.hilton.com" target="_blank"><img src="https://images.squarespace-cdn.com/content/v1/52da9677e4b03d314575985a/1456830266475-PXMPC13U520NYDKCY6TZ/Best+Miami+Hotels+with+a+View+-+Fontainebleau+Miami+Beach.jpg?format=1000w" 
+            style="width: 300px; height:200px;"></a>
+        <br>
+        <a href="https://www.hilton.com" target="_blank"><button class="btn success">Hilton Miami Beach</button></a>
+    </div>
+    <div class="image-wrapper" style="margin-top: 25px">
+        <a href="https://www.marriott.com" target="_blank"><img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/25/3b/6e/60/exterior.jpg?w=700&h=-1&s=1" 
+            style="width: 300px; height:200px;"></a>
+        <br>
+        <a href="https://www.marriott.com" target="_blank"><button class="btn success">Marriott Chicago</button></a>
+    </div>
+
+
+</body>
 {% endblock %}
