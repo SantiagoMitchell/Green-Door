@@ -1,7 +1,32 @@
 {% extends "base.html" %}
 
-
 {% block content %}
+<style>
+
+
+
+    .image-wrapper {
+        box-sizing:border-box;
+        float: left;
+        margin-bottom: 5px;
+        width: 50%;
+    }
+    .btn {
+      border: none; /* Remove borders */
+      color: white; /* Add a text color */
+      padding: 14px 28px; /* Add some padding */
+      cursor: pointer; /* Add a pointer cursor on mouse-over */
+    }
+    .success {background-color: #04AA6D;} /* Green */
+    .success:hover {background-color: #46a049;}
+    
+    .default {background-color: #e7e7e7; color: black;} /* Gray */ 
+    .default:hover {background: #ddd;}
+    
+    
+    </style>
+<h1>Cars</h1>
+
 <h2>Input info</h2>
 <form action="" method="post" novalidate>
     {{ form.hidden_tag() }}
@@ -11,4 +36,26 @@
     </p>
     <p>{{ form.submit() }}</p>
 </form>
+<body>
+
+    <br>
+    <div class="image-wrapper">
+        <img src="https://cdn.motor1.com/images/mgl/jpZ37/s3/mercedes-amg-e-53-coupe-2020.jpg"
+             style="width: 300px; height:200px;"></a>
+        <br>
+        <button class="btn success">Mercedes</button></a>
+    </div>
+   
+    <div class="image-wrapper">
+        <img src="https://images.dealer.com/ddc/vehicles/2023/Acura/Integra/Hatchback/trim_ASpec_Package_38609d/color/Platinum%20White%20Pearl-WV-217%2C219%2C214-640-en_US.jpg?impolicy=downsize_bkpt&imdensity=1&w=520"
+             style="width: 300px; height:200px;"></a>
+        <br>
+        <button class="btn success">Acura</button></a>
+    </div>
+
+
+</body>
+
+
+
 {% endblock %}
