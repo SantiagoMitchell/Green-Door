@@ -4,8 +4,8 @@ from flask_login import login_user, logout_user, login_required, current_user
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import func
 from werkzeug.security import check_password_hash, generate_password_hash
-from app.forms import LoginForm, RegisterForm, SearchForm
-from app.forms import LoginForm, RegisterForm, SearchForm
+from app.forms import LoginForm, RegisterForm, SearchForm, ProfileForm
+from app.forms import LoginForm, RegisterForm, SearchForm, ProfileForm
 from app import db
 from app.models import User, Food, Clothing, Hotel, Car
 import datetime
@@ -115,9 +115,15 @@ def hotelsearchhome():
 def hotelsearchresult():
     return render_template('hotelSearchResult.html')
 
-@app.route('/profile')
+@app.route('/profile', methods=['GET', 'POST'])
 def profile():
-    return render_template('profile.html')
+    form = ProfileForm()
+    if request.method == 'GET':
+        form.first_name.data = current_user.first_name
+        form.last_name.data = current_user.last_name
+        form.email.data = current_user.email
+        form.username.data = current_user.username
+    return render_template('profile.html', form=form)
 
 @app.route('/carSearchHome', methods=['GET', 'POST'])
 def carsearchhome():
