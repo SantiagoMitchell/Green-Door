@@ -145,6 +145,8 @@ label {
     <h1>Register</h1>
     <form action="" method="post" novalidate>
       {{ form.hidden_tag() }}
+      <h3> Invalid Register Imput <br>
+        Try again </h3>
       <p>
         {{ form.first_name.label }}<br>
         {{ form.first_name(size=32, style='height: 25px;') }}

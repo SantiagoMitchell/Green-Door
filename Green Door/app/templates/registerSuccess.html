@@ -1,12 +1,160 @@
-{% extends "base.html" %}
-{% block content %}
-<title>Success</title>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Success</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Asap&display=swap');
+
+    /* Colors */
+    :root {
+      --green-seaweed: rgba(2, 128, 144, 1);
+      --blue-queen: rgba(69, 105, 144, 1);
+      --red-fire: rgba(244, 91, 105, 1);
+	  --light-green: rgba(144, 238, 144, 1);
+    }
+
+    /* Fonts */
+    body {
+      background-color: var(--light-green);
+      font-family: 'Asap', sans-serif;
+    }
+
+    .login {
+      overflow: hidden;
+      background-color: white;
+      padding: 40px 30px 30px 30px;
+      border-radius: 10px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 400px;
+      transform: translate(-50%, -50%);
+      transition: transform 300ms, box-shadow 300ms;
+      box-shadow: 5px 10px 10px rgba(var(--green-seaweed), 0.2);
+    }
+
+    .login::before,
+    .login::after {
+      content: '';
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-top-left-radius: 40%;
+      border-top-right-radius: 45%;
+      border-bottom-left-radius: 35%;
+      border-bottom-right-radius: 40%;
+      z-index: -1;
+    }
+
+    .login::before {
+      left: 40%;
+      bottom: -130%;
+      background-color: rgba(var(--blue-queen), 0.15);
+      animation: wawes 6s infinite linear;
+    }
+
+    .login::after {
+      left: 35%;
+      bottom: -125%;
+      background-color: rgba(var(--green-seaweed), 0.2);
+      animation: wawes 7s infinite;
+    }
+
+    .login > input {
+      font-family: 'Asap', sans-serif;
+      display: block;
+      border-radius: 5px;
+      font-size: 16px;
+      background: white;
+      width: 100%;
+      border: 0;
+      padding: 10px 10px;
+      margin: 15px -10px;
+    }
+
+    .login > button {
+      font-family: 'Asap', sans-serif;
+      cursor: pointer;
+      color: #fff;
+      font-size: 16px;
+      text-transform: uppercase;
+      width: 80px;
+      border: 0;
+      padding: 10px 0;
+      margin-top: 10px;
+      margin-left: -5px;
+      border-radius: 5px;
+      background-color: var(--red-fire);
+      transition: background-color 300ms;
+    }
+
+    .login > button:hover {
+      background-color: #e5171f;
+    }
+
+    @keyframes wawes {
+      from {
+        transform: rotate(0);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
 
 
-<div class="box">
-<h1> Registration Successful! </h1>
-<h2> Continue to the login page to your account. </h2>
-<p><a href="/login">Login Here!</a></p>
 
-</div>
-{% endblock %}
+/* Custom styles for the form */
+label {
+  font-size: 20px;
+  display: block;
+}
+
+.cancel-link {
+  position: static;
+  right: auto;
+  bottom: auto;
+  font-size: 16px;
+  margin-top: 15px;
+  display: block;
+}
+
+.box {
+text-align: center;
+margin: 30px auto;
+padding: 20px;
+max-width: 500px;
+background-color: white;
+border-radius: 10px;
+box-shadow: 5px 10px 10px rgba(var(--green-seaweed), 0.2);
+}
+
+
+  </style>
+  <script>
+    function myFunction() {
+      var x = document.getElementById("myInput");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+    }
+  </script>
+</head>
+<body>
+    <div class="box">
+      <h1> Registration Successful! </h1>
+      <h2> Continue to the login page to your account. </h2>
+      <br>
+      <form action="" method="post" novalidate>
+      <a href="/login">Login Here!</a></form>
+
+    </div>
+  
+</body>
+</html>

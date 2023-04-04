@@ -20,14 +20,14 @@ def loginSuccess():
 @app.route('/', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('loginSuccess'))
+        return redirect(url_for('about'))
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data, password=form.password.data).first()
         if user:
             login_user(user)
             print('Login successful')
-            return render_template('loginSuccess.html', form=form)
+            return render_template('about.html', form=form)
         else:
             print('Login failed')
             return render_template('unsuccessfulLogin.html', form=form)
