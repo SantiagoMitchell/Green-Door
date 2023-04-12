@@ -3,6 +3,7 @@ from flask import render_template, redirect, url_for, request
 from flask_login import login_user, logout_user, login_required, current_user
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import func
+from sqlalchemy import or_
 from werkzeug.security import check_password_hash, generate_password_hash
 from app.forms import LoginForm, RegisterForm, SearchForm, ProfileForm
 from app.forms import LoginForm, RegisterForm, SearchForm, ProfileForm
@@ -75,14 +76,19 @@ def contact():
 def clothingsearchhome():
     form = SearchForm()
     if form.validate_on_submit():
-        # Query DB table for matching name
-        record = db.session.query(Clothing).filter_by(name = form.name.data).all()
+        keyword = form.name.data
+        # Query all records in the DB table matching the keyword in name or description
+        record = db.session.query(Clothing).filter(
+            or_(
+                Clothing.name.ilike(f"%{keyword}%"),
+                Clothing.description.ilike(f"%{keyword}%")
+            )
+        ).all()
         if record:
             return render_template('clothingSearchResult.html', clothing=record)
         else:
             return render_template('about.html')
     return render_template('clothingSearchHome.html', form=form)
-
 @app.route('/clothingSearchResult')
 def clothingsearchresult():
     return render_template('clothingSearchResult.html')
@@ -91,8 +97,14 @@ def clothingsearchresult():
 def foodsearchhome():
     form = SearchForm()
     if form.validate_on_submit():
-        # Query DB table for matching name
-        record = db.session.query(Food).filter_by(name = form.name.data).all()
+        keyword = form.name.data
+        # Query all records in the DB table matching the keyword in name or description
+        record = db.session.query(Food).filter(
+            or_(
+                Food.name.ilike(f"%{keyword}%"),
+                Food.description.ilike(f"%{keyword}%")
+            )
+        ).all()
         if record:
             return render_template('foodSearchResult.html', foods=record)
         else:
@@ -107,8 +119,14 @@ def foodsearchresult():
 def hotelsearchhome():
     form = SearchForm()
     if form.validate_on_submit():
-        # Query DB table for matching name
-        record = db.session.query(Hotel).filter_by(name = form.name.data).all()
+        keyword = form.name.data
+        # Query all records in the DB table matching the keyword in name or description
+        record = db.session.query(Hotel).filter(
+            or_(
+                Hotel.name.ilike(f"%{keyword}%"),
+                Hotel.description.ilike(f"%{keyword}%")
+            )
+        ).all()
         if record:
             return render_template('hotelSearchResult.html', hotels=record)
         else:
@@ -133,8 +151,15 @@ def profile():
 def carsearchhome():
     form = SearchForm()
     if form.validate_on_submit():
-        # Query DB table for matching name
-        record = db.session.query(Car).filter_by(name = form.name.data).all()
+        keyword = form.name.data
+        # Query all records in the DB table matching the keyword in make, name, or description
+        record = db.session.query(Car).filter(
+            or_(
+                Car.make.ilike(f"%{keyword}%"),
+                Car.name.ilike(f"%{keyword}%"),
+                Car.description.ilike(f"%{keyword}%")
+            )
+        ).all()
         if record:
             return render_template('carSearchResult.html', cars=record)
         else:
