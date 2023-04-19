@@ -81,7 +81,8 @@ def clothingsearchhome():
         record = db.session.query(Clothing).filter(
             or_(
                 Clothing.name.ilike(f"%{keyword}%"),
-                Clothing.description.ilike(f"%{keyword}%")
+                Clothing.description.ilike(f"%{keyword}%"),
+                Clothing.certification.ilike(f"%{keyword}%")
             )
         ).all()
         if record:
@@ -89,9 +90,20 @@ def clothingsearchhome():
         else:
             return render_template('about.html')
     return render_template('clothingSearchHome.html', form=form)
+
 @app.route('/clothingSearchResult')
 def clothingsearchresult():
     return render_template('clothingSearchResult.html')
+
+@app.route('/clothingSearchCert')
+def clothingSearchCert():
+    records = db.session.query(Clothing).filter(Clothing.certification.isnot(None)).all()
+    return render_template('clothingSearchCert.html', clothing=records)
+
+@app.route('/clothingSearchCertAbout')
+def clothingSearchCertAbout():
+    return render_template('clothingSearchCertAbout.html')
+
 
 @app.route('/foodSearchHome', methods=['GET', 'POST'])
 def foodsearchhome():
@@ -102,7 +114,9 @@ def foodsearchhome():
         record = db.session.query(Food).filter(
             or_(
                 Food.name.ilike(f"%{keyword}%"),
-                Food.description.ilike(f"%{keyword}%")
+                Food.description.ilike(f"%{keyword}%"),
+                Food.certification.ilike(f"%{keyword}%")
+            
             )
         ).all()
         if record:
@@ -115,6 +129,15 @@ def foodsearchhome():
 def foodsearchresult():
     return render_template('foodSearchResult.html')
 
+@app.route('/foodSearchCert')
+def foodSearchCert():
+    records = db.session.query(Food).filter(Food.certification.isnot(None)).all()
+    return render_template('foodSearchCert.html', foods=records)
+
+@app.route('/foodSearchCertAbout')
+def foodSearchCertAbout():
+    return render_template('foodSearchCertAbout.html')
+
 @app.route('/hotelSearchHome', methods=['GET', 'POST'])
 def hotelsearchhome():
     form = SearchForm()
@@ -124,7 +147,10 @@ def hotelsearchhome():
         record = db.session.query(Hotel).filter(
             or_(
                 Hotel.name.ilike(f"%{keyword}%"),
-                Hotel.description.ilike(f"%{keyword}%")
+                Hotel.description.ilike(f"%{keyword}%"),
+                Hotel.city.ilike(f"%{keyword}%"),
+                Hotel.country.ilike(f"%{keyword}%"),
+                Hotel.certification.ilike(f"%{keyword}%")
             )
         ).all()
         if record:
@@ -136,6 +162,15 @@ def hotelsearchhome():
 @app.route('/hotelSearchResult')
 def hotelsearchresult():
     return render_template('hotelSearchResult.html')
+
+@app.route('/hotelSearchCert')
+def hotelSearchCert():
+    records = db.session.query(Hotel).filter(Hotel.certification.isnot(None)).all()
+    return render_template('hotelSearchCert.html', hotels=records)
+
+@app.route('/hotelSearchCertAbout')
+def hotelSearchCertAbout():
+    return render_template('hotelSearchCertAbout.html')
 
 @app.route('/profile', methods=['GET', 'POST'])
 def profile():
@@ -152,12 +187,13 @@ def carsearchhome():
     form = SearchForm()
     if form.validate_on_submit():
         keyword = form.name.data
-        # Query all records in the DB table matching the keyword in make, name, or description
+        # Query all records in the DB table matching the keyword in make, name, description, or certification
         record = db.session.query(Car).filter(
             or_(
                 Car.make.ilike(f"%{keyword}%"),
                 Car.name.ilike(f"%{keyword}%"),
-                Car.description.ilike(f"%{keyword}%")
+                Car.description.ilike(f"%{keyword}%"),
+                Car.certification.ilike(f"%{keyword}%")
             )
         ).all()
         if record:
@@ -169,4 +205,22 @@ def carsearchhome():
 @app.route('/carSearchResults')
 def carsearchresult():
     return render_template('carSearchResult.html')
+
+@app.route('/carSearchEPA')
+def carsearchEPA():
+    records = db.session.query(Car).filter(Car.certification.isnot(None)).all()
+    return render_template('carSearchEPA.html', cars=records)
+
+@app.route('/carSearchEPAAbout')
+def carsearchEPAAbout():
+    return render_template('carSearchEPAAbout.html')
+
+@app.route('/carSearchBattery')
+def carsearchBattery():
+    cars = Car.query.filter_by(battery=True).all()
+    return render_template('carSearchBattery.html', cars=cars)
+
+@app.route('/carSearchBatteryAbout')
+def carsearchBatteryAbout():
+    return render_template('carSearchBatteryAbout.html')
 

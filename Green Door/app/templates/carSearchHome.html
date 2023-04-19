@@ -19,11 +19,48 @@
 
 .default {background-color: #e7e7e7; color: black;} /* Gray */ 
 .default:hover {background: #ddd;}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+label {
+  font-size: 1.2rem;
+  margin-right: 10px;
+}
+
+input[type="text"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  flex: 1;
+  margin-right: 10px;
+}
+
+button[type="submit"] {
+  background-color: #04AA6D;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #04623C;
+}
     
-    </style>
+</style>
+
 <h1>Cars</h1>
 
-<h2>Search for a car</h2>
+<h2>Search for car</h2>
 <form action="" method="post" novalidate>
     {{ form.hidden_tag() }}
     <p>
@@ -35,30 +72,31 @@
 <body>
     <br>
     <div class="image-wrapper">
-        <a href="https://www.tesla.com" target="_blank"><img src="https://electrek.co/wp-content/uploads/sites/3/2021/05/Tesla-Logo-Hero.jpg?quality=82&strip=all&w=1024"
-             style="width: 300px; height:200px;"></a>
-        <br>
-        <a href="https://www.tesla.com" target="_blank"><button class="btn success">Tesla</button></a>
-    </div>
-    <div class="image-wrapper">
-        <a href="https://www.jeep.com/grand-cherokee/grand-cherokee-4xe.html" target="_blank"><img src="https://d1lss44hh2trtw.cloudfront.net/assets/article/2021/09/29/jeep-reveals-its-first-plug-in-hybrid-electric-grand-cherokee-suv_feature.jpg"
-             style="width: 300px; height:200px;"></a>
-        <br>
-        <a href="https://www.jeep.com/grand-cherokee/grand-cherokee-4xe.html" target="_blank"><button class="btn success">Jeep Grand Cherokee-4xe</button></a>
-    </div>
+      <a href="/carSearchEPA"><img src="https://electrek.co/wp-content/uploads/sites/3/2021/05/Tesla-Logo-Hero.jpg?quality=82&strip=all&w=1024"
+           style="width: 300px; height:200px;"></a>
+      <br>
+      <a href="/carSearchEPA"><button class="btn success">List Products By EPA Certification</button></a>
+  </div>
+  <div class="image-wrapper">
+      <a href="/carSearchEPAAbout"><img src="https://d1lss44hh2trtw.cloudfront.net/assets/article/2021/09/29/jeep-reveals-its-first-plug-in-hybrid-electric-grand-cherokee-suv_feature.jpg"
+           style="width: 300px; height:200px;"></a>
+      <br>
+      <a href="/carSearchEPAAbout"><button class="btn success">Learn about EPA Certification</button></a>
+  </div>
 
-    <div class="image-wrapper" style="margin-top: 25px;">
-        <a href="https://www.chevrolet.com/electric/equinox-ev" target="_blank"><img src="https://www.chevrolet.com/electric/s3/uploads/chevrolet/2023_equinox_ev_masthead_01_176e8f3e99.jpg" 
-            style="width: 300px; height:200px;"></a>
-        <br>
-        <a href="https://www.chevrolet.com/electric/equinox-ev" target="_blank"><button class="btn success">Chevrolet Equinox-ev</button></a>
-    </div>
-    <div class="image-wrapper" style="margin-top: 25px">
-        <a href="https://www.ford.com/suvs/mach-e/" target="_blank"><img src="https://media.ford.com/content/fordmedia/fna/us/en/products/evs/mustang-mach-e/mustang-mach-e/jcr:content/content/media-section-parsys/textimage_f597/image.img.951.535.jpg/1608221793793.jpg"
-            style="width: 300px; height:200px;"></a>
-        <br>
-        <a href="https://www.ford.com/suvs/mach-e/" target="_blank"><button class="btn success">Ford Mustang-mach-e</button></a>
-    </div>    
+  <div class="image-wrapper" style="margin-top: 25px;">
+      <a href="/carSearchBattery"><img src="https://www.chevrolet.com/electric/s3/uploads/chevrolet/2023_equinox_ev_masthead_01_176e8f3e99.jpg" 
+          style="width: 300px; height:200px;"></a>
+      <br>
+      <a href="/carSearchBattery"><button class="btn success">List Battery Products</a>
+  </div>
+  
+  <div class="image-wrapper" style="margin-top: 25px;">
+      <a href="/carSearchBatteryAbout"><img src="https://www.chevrolet.com/electric/s3/uploads/chevrolet/2023_equinox_ev_masthead_01_176e8f3e99.jpg" 
+          style="width: 300px; height:200px;"></a>
+      <br>
+      <a href="/carSearchBatteryAbout"><button class="btn success">Learn about Battery Products</a>
+  </div>
 
 
 </body>

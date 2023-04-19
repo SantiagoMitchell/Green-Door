@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 
 {% block content %}
-
 <style>
 	table {
 	  border-collapse: collapse;
@@ -35,27 +34,18 @@
 <table>
 	<thead>
 		<tr>
-			<th>Make</th>
-			<th>Model</th>
-			<th>Year</th>
-			<th>Price</th>
+			<th>Name</th>
 			<th>Description</th>
 			<th>Certification</th>
-			<th>Battery</th>
 			<th>Website</th>
 		</tr>
 	</thead>
 	<tbody>
-		{% for name in cars %}
+		{% for name in foods %}
 		<tr>
-			<td>{{name.make}}</td>
 			<td>{{name.name}}</td>
-			<td>{{name.year}}</td>
-			<td>${{name.price}}</td>
 			<td>{{name.description}}</td>
-			<td>{% if name.battery %}Yes{% else %}No{% endif %}</td>
 			<td>{{name.certification}}</td>
-			
 			<td><a href="{{name.website_url}}" target="_blank">Visit Site</a></td>
 		</tr>
 		{% endfor %}

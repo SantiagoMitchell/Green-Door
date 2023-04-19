@@ -1,13 +1,12 @@
 {% extends "base.html" %}
 
-
 {% block content %}
 <style>
 .image-wrapper {
-    box-sizing:border-box;
-    float: left;
-    margin-bottom: 5px;
-    width: 50%;
+	box-sizing:border-box;
+	float: left;
+	margin-bottom: 5px;
+	width: 50%;
 }
 .btn {
   border: none; /* Remove borders */
@@ -20,6 +19,43 @@
 
 .default {background-color: #e7e7e7; color: black;} /* Gray */ 
 .default:hover {background: #ddd;}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+label {
+  font-size: 1.2rem;
+  margin-right: 10px;
+}
+
+input[type="text"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  flex: 1;
+  margin-right: 10px;
+}
+
+button[type="submit"] {
+  background-color: #04AA6D;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #04623C;
+}
+    
 </style>
 
     <h1>Food</h1>
@@ -35,30 +71,18 @@
 <body>
     <br>
     <div class="image-wrapper">
-        <a href="https://www.wholefoodsmarket.com/products/produce/fresh-fruit" target="_blank"><img src="https://food.unl.edu/newsletters/images/fresh-fruit.-colorful.jpg"
+        <a href="/foodSearchCert" target="_blank"><img src="https://food.unl.edu/newsletters/images/fresh-fruit.-colorful.jpg"
              style="width: 300px; height:200px;"></a>
         <br>
-        <a href="https://www.wholefoodsmarket.com/products/produce/fresh-fruit" target="_blank"><button class="btn success">Fresh Fruits</button></a>
+        <a href="/foodSearchCert" target="_blank"><button class="btn success">Search by Certification</button></a>
     </div>
     <div class="image-wrapper">
-        <a href="https://www.wholefoodsmarket.com/products/produce/fresh-vegetables" target="_blank"><img src="https://livingonthecheap.com/lotc-cms/wp-content/uploads/2016/07/How-to-keep-summer-veggies-fresh-to-avoid-food-waste.jpg"
+        <a href="/foodSearchCertAbout" target="_blank"><img src="https://livingonthecheap.com/lotc-cms/wp-content/uploads/2016/07/How-to-keep-summer-veggies-fresh-to-avoid-food-waste.jpg"
              style="width: 300px; height:200px;"></a>
         <br>
-        <a href="https://www.wholefoodsmarket.com/products/produce/fresh-vegetables" target="_blank"><button class="btn success">Fresh Vegtables</button></a>
+        <a href="/foodSearchCertAbout" target="_blank"><button class="btn success">About Certification</button></a>
     </div>
 
-    <div class="image-wrapper" style="margin-top: 25px;">
-        <a href="https://stopandshop.com/product-search/bread?searchRef=" target="_blank"><img src="https://assets.bonappetit.com/photos/5c62e4a3e81bbf522a9579ce/5:4/w_2815,h_2252,c_limit/milk-bread.jpg" 
-            style="width: 300px; height:200px;"></a>
-        <br>
-        <a href="https://stopandshop.com/product-search/bread?searchRef=" target="_blank"><button class="btn success">Bread</button></a>
-    </div>
-    <div class="image-wrapper" style="margin-top: 25px">
-        <a href="https://healthy-lifestyles-llc.business.site/?utm_source=gmb&utm_medium=referral" target="_blank"><img src="https://insanelygoodrecipes.com/wp-content/uploads/2021/10/Delicious-Fruit-Juices-Orange-Kiwi-and-Strawberry.jpg" 
-            style="width: 300px; height:200px;"></a>
-        <br>
-        <a href="https://healthy-lifestyles-llc.business.site/?utm_source=gmb&utm_medium=referral" target="_blank"><button class="btn success">Fresh Juice</button></a>
-    </div>
-
+  
 </body>
 {% endblock %}

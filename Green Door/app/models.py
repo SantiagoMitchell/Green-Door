@@ -24,39 +24,44 @@ class User(UserMixin, db.Model):
 class Food(db.Model):
     __tablename__ = 'foods'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50))
+    name = db.Column(db.String(255))
     description = db.Column(db.Text)
-    website_url = db.Column(db.String(200))
-    price = db.Column(db.Float)
+    website_url = db.Column(db.String(255))
+    certification = db.Column(db.String(255))
 
 
 class Clothing(db.Model):
     __tablename__ = 'clothing'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50))
+    name = db.Column(db.String(255))
     description = db.Column(db.Text)
-    website_url = db.Column(db.String(200))
+    website_url = db.Column(db.String(255))
     price = db.Column(db.Float)
+    certification = db.Column(db.String(255))
 
 
 class Hotel(db.Model):
     __tablename__ = 'hotels'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50))
+    name = db.Column(db.String(255))
     description = db.Column(db.Text)
-    website_url = db.Column(db.String(200))
-    price = db.Column(db.Float)
+    website_url = db.Column(db.String(255))
+    city = db.Column(db.String(255))
+    country = db.Column(db.String(255))
+    certification = db.Column(db.String(255))
 
 
 class Car(db.Model):
     __tablename__ = 'cars'
     id = db.Column(db.Integer, primary_key=True)
-    make = db.Column(db.String(50))
-    name = db.Column(db.String(50))
+    make = db.Column(db.String(255))
+    name = db.Column(db.String(255))
     year = db.Column(db.Integer)
     description = db.Column(db.Text)
-    website_url = db.Column(db.String(200))
+    website_url = db.Column(db.String(255))
     price = db.Column(db.Float)
+    battery = db.Column(db.Boolean)
+    certification = db.Column(db.String(255))
 
 @login.user_loader
 def load_user(id):
