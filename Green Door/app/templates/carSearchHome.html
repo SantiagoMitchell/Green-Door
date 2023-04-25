@@ -2,65 +2,67 @@
 
 {% block content %}
 <style>
-.image-wrapper {
-	box-sizing:border-box;
-	float: left;
-	margin-bottom: 5px;
-	width: 50%;
-}
-.btn {
-  border: none; /* Remove borders */
-  color: white; /* Add a text color */
-  padding: 14px 28px; /* Add some padding */
-  cursor: pointer; /* Add a pointer cursor on mouse-over */
-}
-.success {background-color: #04AA6D;} /* Green */
-.success:hover {background-color: #46a049;}
-
-.default {background-color: #e7e7e7; color: black;} /* Gray */ 
-.default:hover {background: #ddd;}
-
-.search-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
-}
-
-label {
-  font-size: 1.2rem;
-  margin-right: 10px;
-}
-
-input[type="text"] {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  flex: 1;
-  margin-right: 10px;
-}
-
-button[type="submit"] {
-  background-color: #04AA6D;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  cursor: pointer;
-}
-
-button[type="submit"]:hover {
-  background-color: #04623C;
-}
-    
-</style>
+  .image-wrapper {
+    box-sizing:border-box;
+    float: left;
+    margin-bottom: 5px;
+    width: 50%;
+  }
+  .btn {
+    border: none; /* Remove borders */
+    color: white; /* Add a text color */
+    padding: 14px 28px; /* Add some padding */
+    cursor: pointer; /* Add a pointer cursor on mouse-over */
+  }
+  .success {background-color: #04AA6D;} /* Green */
+  .success:hover {background-color: #46a049;}
+  
+  .default {background-color: #e7e7e7; color: black;} /* Gray */ 
+  .default:hover {background: #ddd;}
+  
+  .search-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  
+  label {
+    font-size: 1.2rem;
+    margin-right: 10px;
+  }
+  
+  input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    flex: 1;
+    margin-right: 10px;
+  }
+  
+  button[type="submit"] {
+    background-color: #04AA6D;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #04623C;
+  }
+      
+  </style>
 
 <h1>Cars</h1>
-
 <h2>Search for car</h2>
+{% if message %}
+    <div class="alert alert-danger">{{ message }}</div>
+{% endif %}
 <form action="" method="post" novalidate>
     {{ form.hidden_tag() }}
     <p>
@@ -69,34 +71,35 @@ button[type="submit"]:hover {
     </p>
     <p>{{ form.submit() }}</p>
 </form>
-<body>
-    <br>
-    <div class="image-wrapper">
-      <a href="/carSearchEPA"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-E_SpGeaZ6OD7aCQoqNq3_IO4WS2m5Nt9WxYY7qVIiQ&usqp=CAU&ec=48665698"
-           style="width: 300px; height:200px;"></a>
-      <br>
-      <a href="/carSearchEPA"><button class="btn success">List Vehicles By EPA Certification</button></a>
-  </div>
-  <div class="image-wrapper">
-      <a href="/carSearchEPAAbout"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Seal_of_the_United_States_Environmental_Protection_Agency.svg/1200px-Seal_of_the_United_States_Environmental_Protection_Agency.svg.png"
-           style="width: 300px; height:200px;"></a>
-      <br>
-      <a href="/carSearchEPAAbout"><button class="btn success">Learn about EPA Certification</button></a>
-  </div>
 
-  <div class="image-wrapper" >
-      <a href="/carSearchBattery"><img src="https://electrek.co/wp-content/uploads/sites/3/2023/01/Best-selling-electric-vehicles-6.jpeg?quality=82&strip=all" 
-          style="width: 300px; height:200px;"></a>
-      <br>
-      <a href="/carSearchBattery"><button class="btn success">List Electric Vehicles</button></a>
-  </div>
-  
+<body>
+  <br>
   <div class="image-wrapper">
-      <a href="/carSearchBatteryAbout"><img src="https://uploads-ssl.webflow.com/5b0f1c2b558807210a5e423a/5b9bf2e2899c186209ce8207_tesla-model-3-matte-yellow-paint-wrap-palmer-signs_0005_TESLA-6813.jpg" 
-          style="width: 300px; height:200px;"></a>
-      <br>
-      <a href="/carSearchBatteryAbout"><button class="btn success">Learn about Battery-Powered Vehicles</button></a>
-  </div>
+    <a href="/carSearchEPA"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-E_SpGeaZ6OD7aCQoqNq3_IO4WS2m5Nt9WxYY7qVIiQ&usqp=CAU&ec=48665698"
+         style="width: 300px; height:200px;"></a>
+    <br>
+    <a href="/carSearchEPA"><button class="btn success">List Vehicles By EPA Certification</button></a>
+</div>
+<div class="image-wrapper">
+    <a href="/carSearchEPAAbout"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Seal_of_the_United_States_Environmental_Protection_Agency.svg/1200px-Seal_of_the_United_States_Environmental_Protection_Agency.svg.png"
+         style="width: 300px; height:200px;"></a>
+    <br>
+    <a href="/carSearchEPAAbout"><button class="btn success">Learn about EPA Certification</button></a>
+</div>
+
+<div class="image-wrapper" >
+    <a href="/carSearchBattery"><img src="https://electrek.co/wp-content/uploads/sites/3/2023/01/Best-selling-electric-vehicles-6.jpeg?quality=82&strip=all" 
+        style="width: 300px; height:200px;"></a>
+    <br>
+    <a href="/carSearchBattery"><button class="btn success">List Electric Vehicles</button></a>
+</div>
+
+<div class="image-wrapper">
+    <a href="/carSearchBatteryAbout"><img src="https://uploads-ssl.webflow.com/5b0f1c2b558807210a5e423a/5b9bf2e2899c186209ce8207_tesla-model-3-matte-yellow-paint-wrap-palmer-signs_0005_TESLA-6813.jpg" 
+        style="width: 300px; height:200px;"></a>
+    <br>
+    <a href="/carSearchBatteryAbout"><button class="btn success">Learn about Battery-Powered Vehicles</button></a>
+</div>
 
 
 </body>

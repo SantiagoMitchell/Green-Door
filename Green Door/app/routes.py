@@ -9,6 +9,8 @@ from app.forms import LoginForm, RegisterForm, SearchForm, ProfileForm
 from app.forms import LoginForm, RegisterForm, SearchForm, ProfileForm
 from app import db
 from app.models import User, Food, Clothing, Hotel, Car
+from validate_email import validate_email
+import phonenumbers
 import datetime
 import sys
 
@@ -17,6 +19,7 @@ import sys
 def loginSuccess():
     return render_template('loginSuccess.html')
 
+
 @app.route('/login',methods=['GET', 'POST'])
 @app.route('/', methods=['GET', 'POST'])
 def login():
@@ -24,8 +27,8 @@ def login():
         return redirect(url_for('about'))
     form = LoginForm()
     if form.validate_on_submit():
-        user = User.query.filter_by(username=form.username.data, password=form.password.data).first()
-        if user:
+        user = User.query.filter_by(username=form.username.data).first()
+        if user and check_password_hash(user.password, form.password.data):
             login_user(user)
             print('Login successful')
             return render_template('about.html', form=form)
@@ -46,14 +49,22 @@ def register():
             username = form.username.data
             password = form.password.data
             role = 'user'
-            user = User(first_name=first_name, last_name=last_name, password=password, email=email, username=username, role='user')
+            phone_number = form.phone_number.data
+            street_number = form.street_number.data
+            street = form.street.data
+            city = form.city.data
+            state = form.state.data
+            zip_code = form.zip_code.data
+            user = User(first_name=first_name, last_name=last_name, password=generate_password_hash(password),
+                        email=email, username=username, role=role, phone_number=phone_number, street_number=street_number,
+                        street=street, city=city, state=state, zip_code=zip_code)
             db.session.add(user)
             db.session.commit()
             return render_template('registerSuccess.html')
         if user is not None:
             return render_template('unsuccessfulRegister.html', form=form)
     return render_template('register.html', form=form)
-
+	
 @app.route('/logout')
 @login_required
 def logout():
@@ -75,6 +86,7 @@ def contact():
 @app.route('/clothingSearchHome', methods=['GET', 'POST'])
 def clothingsearchhome():
     form = SearchForm()
+    message = "Please enter a keyword to search." # Set a default message
     if form.validate_on_submit():
         keyword = form.name.data
         # Query all records in the DB table matching the keyword in name or description
@@ -88,8 +100,8 @@ def clothingsearchhome():
         if record:
             return render_template('clothingSearchResult.html', clothing=record)
         else:
-            return render_template('about.html')
-    return render_template('clothingSearchHome.html', form=form)
+            message = "Sorry, we couldn't find any results for your search."
+    return render_template('clothingSearchHome.html', form=form, message=message)
 
 @app.route('/clothingSearchResult')
 def clothingsearchresult():
@@ -108,6 +120,7 @@ def clothingSearchCertAbout():
 @app.route('/foodSearchHome', methods=['GET', 'POST'])
 def foodsearchhome():
     form = SearchForm()
+    message = "Please enter a keyword to search." # Set a default message
     if form.validate_on_submit():
         keyword = form.name.data
         # Query all records in the DB table matching the keyword in name or description
@@ -116,14 +129,13 @@ def foodsearchhome():
                 Food.name.ilike(f"%{keyword}%"),
                 Food.description.ilike(f"%{keyword}%"),
                 Food.certification.ilike(f"%{keyword}%")
-            
             )
         ).all()
         if record:
             return render_template('foodSearchResult.html', foods=record)
         else:
-            return render_template('about.html')
-    return render_template('foodSearchHome.html', form=form)
+            message = "Sorry, we couldn't find any results for your search."
+    return render_template('foodSearchHome.html', form=form, message=message)
 
 @app.route('/foodSearchResult')
 def foodsearchresult():
@@ -141,6 +153,7 @@ def foodSearchCertAbout():
 @app.route('/hotelSearchHome', methods=['GET', 'POST'])
 def hotelsearchhome():
     form = SearchForm()
+    message = "Please enter a keyword to search." # Set a default message
     if form.validate_on_submit():
         keyword = form.name.data
         # Query all records in the DB table matching the keyword in name or description
@@ -156,9 +169,8 @@ def hotelsearchhome():
         if record:
             return render_template('hotelSearchResult.html', hotels=record)
         else:
-            return render_template('about.html')
-    return render_template('hotelSearchHome.html', form=form)
-
+            message = "Sorry, we couldn't find any results for your search."
+    return render_template('hotelSearchHome.html', form=form, message=message)
 @app.route('/hotelSearchResult')
 def hotelsearchresult():
     return render_template('hotelSearchResult.html')
@@ -171,7 +183,7 @@ def hotelSearchCert():
 @app.route('/hotelSearchCertAbout')
 def hotelSearchCertAbout():
     return render_template('hotelSearchCertAbout.html')
-
+	
 @app.route('/profile', methods=['GET', 'POST'])
 def profile():
     form = ProfileForm()
@@ -180,11 +192,17 @@ def profile():
         form.last_name.data = current_user.last_name
         form.email.data = current_user.email
         form.username.data = current_user.username
+        form.phone_number.data = current_user.phone_number
+        form.street_number.data = current_user.street_number
+        form.street.data = current_user.street
+        form.city.data = current_user.city
+        form.state.data = current_user.state
+        form.zip_code.data = current_user.zip_code
     return render_template('profile.html', form=form)
-
 @app.route('/carSearchHome', methods=['GET', 'POST'])
 def carsearchhome():
     form = SearchForm()
+    message = "Please enter a keyword to search." # Set a default message
     if form.validate_on_submit():
         keyword = form.name.data
         # Query all records in the DB table matching the keyword in make, name, description, or certification
@@ -199,8 +217,8 @@ def carsearchhome():
         if record:
             return render_template('carSearchResult.html', cars=record)
         else:
-            return render_template('about.html')
-    return render_template('carSearchHome.html', form=form)
+            message = "Sorry, we couldn't find any results for your search."
+    return render_template('carSearchHome.html', form=form, message=message)
 
 @app.route('/carSearchResults')
 def carsearchresult():

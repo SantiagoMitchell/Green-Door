@@ -32,8 +32,9 @@
 			<thead>
 				<tr>
 					<th>Name</th>
-					<th>Price</th>
 					<th>Description</th>
+					<th>Price</th>
+					<th>Certification</th>
 					<th>Website</th>
 				</tr>
 			</thead>
@@ -41,9 +42,10 @@
 				{% for name in clothing %}
 				<tr>
 					<td>{{name.name}}</td>
-					<td>{{name.price}}</td>
 					<td>{{name.description}}</td>
-					<td>{{name.website_url}}</td>
+					<td>{{name.price}}</td>
+					<td>{{name.certification}}</td>
+					<td><a href="{{name.website_url}}" target="_blank">Visit Site</a></td>
 				</tr>
 				{% endfor %}
 			</tbody>

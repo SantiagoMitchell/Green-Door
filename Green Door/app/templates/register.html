@@ -31,6 +31,7 @@
       top: 50%;
       left: 50%;
       width: 400px;
+      margin-top: 270px;
       transform: translate(-50%, -50%);
       transition: transform 300ms, box-shadow 300ms;
       box-shadow: 5px 10px 10px rgba(var(--green-seaweed), 0.2);
@@ -166,10 +167,34 @@ label {
         <input type="password" name="password" value="" id="myInput" size=32 style='height: 25px'><br><br>
         <input type="checkbox" onclick="myFunction()">Show Password
       </p>
+      <p>
+        {{ form.phone_number.label }}<br>
+        {{ form.phone_number(size=32, style='height: 25px;') }}
+      </p>
+      <p>
+        {{ form.street_number.label }}<br>
+        {{ form.street_number(size=32, style='height: 25px;') }}
+      </p>
+      <p>
+        {{ form.street.label }}<br>
+        {{ form.street(size=32, style='height: 25px;') }}
+      </p>
+      <p>
+        {{ form.city.label }}<br>
+        {{ form.city(size=32, style='height: 25px;') }}
+      </p>
+      <p>
+        {{ form.state.label }}<br>
+        {{ form.state(size=32, style='height: 25px;') }}
+      </p>
+      <p>
+        {{ form.zip_code.label }}<br>
+        {{ form.zip_code(size=32, style='height: 25px;') }}
+      </p>
       <p> {{ form.submit }} </p>
       <a href="/login" class="cancel-link">Cancel</a>
     </form>
   </div>
-  <a href="https://codepen.io/davinci/" target="_blank">check my other pens</a>
+  
 </body>
 </html>

@@ -2,63 +2,66 @@
 
 {% block content %}
 <style>
-.image-wrapper {
-	box-sizing:border-box;
-	float: left;
-	margin-bottom: 5px;
-	width: 50%;
-}
-.btn {
-  border: none; /* Remove borders */
-  color: white; /* Add a text color */
-  padding: 14px 28px; /* Add some padding */
-  cursor: pointer; /* Add a pointer cursor on mouse-over */
-}
-.success {background-color: #04AA6D;} /* Green */
-.success:hover {background-color: #46a049;}
-
-.default {background-color: #e7e7e7; color: black;} /* Gray */ 
-.default:hover {background: #ddd;}
-
-.search-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
-}
-
-label {
-  font-size: 1.2rem;
-  margin-right: 10px;
-}
-
-input[type="text"] {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  flex: 1;
-  margin-right: 10px;
-}
-
-button[type="submit"] {
-  background-color: #04AA6D;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  cursor: pointer;
-}
-
-button[type="submit"]:hover {
-  background-color: #04623C;
-}
-    
-</style>
+  .image-wrapper {
+    box-sizing:border-box;
+    float: left;
+    margin-bottom: 5px;
+    width: 50%;
+  }
+  .btn {
+    border: none; /* Remove borders */
+    color: white; /* Add a text color */
+    padding: 14px 28px; /* Add some padding */
+    cursor: pointer; /* Add a pointer cursor on mouse-over */
+  }
+  .success {background-color: #04AA6D;} /* Green */
+  .success:hover {background-color: #46a049;}
+  
+  .default {background-color: #e7e7e7; color: black;} /* Gray */ 
+  .default:hover {background: #ddd;}
+  
+  .search-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  
+  label {
+    font-size: 1.2rem;
+    margin-right: 10px;
+  }
+  
+  input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    flex: 1;
+    margin-right: 10px;
+  }
+  
+  button[type="submit"] {
+    background-color: #04AA6D;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #04623C;
+  }
+      
+  </style>
 <h1>Hotels</h1>
 <h2>Search for a hotel</h2>
+{% if message %}
+    <div class="alert alert-danger">{{ message }}</div>
+{% endif %}
 <form action="" method="post" novalidate>
     {{ form.hidden_tag() }}
     <p>
@@ -70,16 +73,16 @@ button[type="submit"]:hover {
 <body>
     <br>
     <div class="image-wrapper">
-        <a href="/hotelSearchCert" target="_blank"><img src="https://pix10.agoda.net/hotelImages/564/5641/5641_16062302430043992737.jpg?ca=6&ce=1&s=1024x768"
+        <a href="/hotelSearchCert" ><img src="https://pix10.agoda.net/hotelImages/564/5641/5641_16062302430043992737.jpg?ca=6&ce=1&s=1024x768"
              style="width: 300px; height:200px;"></a>
         <br>
-        <a href="/hotelSearchCert" target="_blank"><button class="btn success">Search for Green-Certified Hotels</button></a>
+        <a href="/hotelSearchCert" ><button class="btn success">Search for Green-Certified Hotels</button></a>
     </div>
     <div class="image-wrapper">
-        <a href="/hotelSearchCertAbout" target="_blank"><img src="https://th.bing.com/th/id/OIP.14fOpYGkMJacpf57Z3UtQgHaF7?w=242&h=193&c=7&r=0&o=5&dpr=1.5&pid=1.7"
+        <a href="/hotelSearchCertAbout"><img src="https://th.bing.com/th/id/OIP.14fOpYGkMJacpf57Z3UtQgHaF7?w=242&h=193&c=7&r=0&o=5&dpr=1.5&pid=1.7"
              style="width: 300px; height:200px;"></a>
         <br>
-        <a href="/hotelSearchCertAbout" target="_blank"><button class="btn success">Learn about Certifications</button></a>
+        <a href="/hotelSearchCertAbout"><button class="btn success">Learn about Certifications</button></a>
     </div>
 
 

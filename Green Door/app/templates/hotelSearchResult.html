@@ -32,8 +32,10 @@
 			<thead>
 				<tr>
 					<th>Name</th>
-					<th>Price</th>
+					<th>City</th>
+					<th>Country</th>
 					<th>Description</th>
+					<th>Certification</th>
 					<th>Website</th>
 				</tr>
 			</thead>
@@ -41,11 +43,13 @@
 				{% for name in hotels %}
 				<tr>
 					<td>{{name.name}}</td>
-					<td>{{name.price}}</td>
+					<td>{{name.city}}</td>
+					<td>{{name.country}}</td>
 					<td>{{name.description}}</td>
-					<td>{{name.website_url}}</td>
+					<td>{{name.certification}}</td>
+					<td><a href="{{name.website_url}}" target="_blank">Visit Site</a></td>
 				</tr>
 				{% endfor %}
 			</tbody>
 		</table>
-{% endblock %
+{% endblock %}

@@ -15,8 +15,13 @@ class RegisterForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
     show_password = BooleanField('Show password')
+    phone_number = StringField('Phone Number', validators=[DataRequired()])
+    street_number = StringField('Street Number', validators=[DataRequired()])
+    street = StringField('Street', validators=[DataRequired()])
+    city = StringField('City', validators=[DataRequired()])
+    state = StringField('State', validators=[DataRequired()])
+    zip_code = StringField('Zip Code', validators=[DataRequired()])
     submit = SubmitField("Submit")
-
 class SearchForm(FlaskForm):
     name = StringField('search', validators=[DataRequired()])
     submit = SubmitField("Submit")
@@ -26,4 +31,12 @@ class ProfileForm(FlaskForm):
     last_name = StringField('Last Name', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired()])
     username = StringField('Username', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    show_password = BooleanField('Show password')
+    phone_number = StringField('Phone Number', validators=[DataRequired()])
+    street_number = StringField('Street Number', validators=[DataRequired()])
+    street = StringField('Street', validators=[DataRequired()])
+    city = StringField('City', validators=[DataRequired()])
+    state = StringField('State', validators=[DataRequired()])
+    zip_code = StringField('Zip Code', validators=[DataRequired()])
    

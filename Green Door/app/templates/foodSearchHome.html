@@ -2,64 +2,67 @@
 
 {% block content %}
 <style>
-.image-wrapper {
-	box-sizing:border-box;
-	float: left;
-	margin-bottom: 5px;
-	width: 50%;
-}
-.btn {
-  border: none; /* Remove borders */
-  color: white; /* Add a text color */
-  padding: 14px 28px; /* Add some padding */
-  cursor: pointer; /* Add a pointer cursor on mouse-over */
-}
-.success {background-color: #04AA6D;} /* Green */
-.success:hover {background-color: #46a049;}
-
-.default {background-color: #e7e7e7; color: black;} /* Gray */ 
-.default:hover {background: #ddd;}
-
-.search-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
-}
-
-label {
-  font-size: 1.2rem;
-  margin-right: 10px;
-}
-
-input[type="text"] {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  flex: 1;
-  margin-right: 10px;
-}
-
-button[type="submit"] {
-  background-color: #04AA6D;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  cursor: pointer;
-}
-
-button[type="submit"]:hover {
-  background-color: #04623C;
-}
-    
-</style>
+  .image-wrapper {
+    box-sizing:border-box;
+    float: left;
+    margin-bottom: 5px;
+    width: 50%;
+  }
+  .btn {
+    border: none; /* Remove borders */
+    color: white; /* Add a text color */
+    padding: 14px 28px; /* Add some padding */
+    cursor: pointer; /* Add a pointer cursor on mouse-over */
+  }
+  .success {background-color: #04AA6D;} /* Green */
+  .success:hover {background-color: #46a049;}
+  
+  .default {background-color: #e7e7e7; color: black;} /* Gray */ 
+  .default:hover {background: #ddd;}
+  
+  .search-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  
+  label {
+    font-size: 1.2rem;
+    margin-right: 10px;
+  }
+  
+  input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    flex: 1;
+    margin-right: 10px;
+  }
+  
+  button[type="submit"] {
+    background-color: #04AA6D;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #04623C;
+  }
+      
+  </style>
 
     <h1>Food</h1>
-    <h2>Search for food<h2>
+    <h2>Search for food</h2>
+      {% if message %}
+      <div class="alert alert-danger">{{ message }}</div>
+  {% endif %}
 <form action="" method="post" novalidate>
     {{ form.hidden_tag() }}
     <p>
@@ -71,16 +74,16 @@ button[type="submit"]:hover {
 <body>
     <br>
     <div class="image-wrapper">
-        <a href="/foodSearchCert" target="_blank"><img src="https://food.unl.edu/newsletters/images/fresh-fruit.-colorful.jpg"
+        <a href="/foodSearchCert"><img src="https://food.unl.edu/newsletters/images/fresh-fruit.-colorful.jpg"
              style="width: 300px; height:200px;"></a>
         <br>
-        <a href="/foodSearchCert" target="_blank"><button class="btn success">Search for Certified Products</button></a>
+        <a href="/foodSearchCert"><button class="btn success">Search for Certified Products</button></a>
     </div>
     <div class="image-wrapper">
-        <a href="/foodSearchCertAbout" target="_blank"><img src="https://livingonthecheap.com/lotc-cms/wp-content/uploads/2016/07/How-to-keep-summer-veggies-fresh-to-avoid-food-waste.jpg"
+        <a href="/foodSearchCertAbout"><img src="https://livingonthecheap.com/lotc-cms/wp-content/uploads/2016/07/How-to-keep-summer-veggies-fresh-to-avoid-food-waste.jpg"
              style="width: 300px; height:200px;"></a>
         <br>
-        <a href="/foodSearchCertAbout" target="_blank"><button class="btn success">Learn about Certifications</button></a>
+        <a href="/foodSearchCertAbout"><button class="btn success">Learn about Certifications</button></a>
     </div>
 
   

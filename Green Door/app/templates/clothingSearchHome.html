@@ -2,83 +2,87 @@
 
 {% block content %}
 <style>
-.image-wrapper {
-	box-sizing:border-box;
-	float: left;
-	margin-bottom: 5px;
-	width: 50%;
-}
-.btn {
-  border: none; /* Remove borders */
-  color: white; /* Add a text color */
-  padding: 14px 28px; /* Add some padding */
-  cursor: pointer; /* Add a pointer cursor on mouse-over */
-}
-.success {background-color: #04AA6D;} /* Green */
-.success:hover {background-color: #46a049;}
+  .image-wrapper {
+    box-sizing:border-box;
+    float: left;
+    margin-bottom: 5px;
+    width: 50%;
+  }
+  .btn {
+    border: none; /* Remove borders */
+    color: white; /* Add a text color */
+    padding: 14px 28px; /* Add some padding */
+    cursor: pointer; /* Add a pointer cursor on mouse-over */
+  }
+  .success {background-color: #04AA6D;} /* Green */
+  .success:hover {background-color: #46a049;}
+  
+  .default {background-color: #e7e7e7; color: black;} /* Gray */ 
+  .default:hover {background: #ddd;}
+  
+  .search-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  
+  label {
+    font-size: 1.2rem;
+    margin-right: 10px;
+  }
+  
+  input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    flex: 1;
+    margin-right: 10px;
+  }
+  
+  button[type="submit"] {
+    background-color: #04AA6D;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #04623C;
+  }
+      
+  </style>
 
-.default {background-color: #e7e7e7; color: black;} /* Gray */ 
-.default:hover {background: #ddd;}
-
-.search-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
-}
-
-label {
-  font-size: 1.2rem;
-  margin-right: 10px;
-}
-
-input[type="text"] {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  flex: 1;
-  margin-right: 10px;
-}
-
-button[type="submit"] {
-  background-color: #04AA6D;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  cursor: pointer;
-}
-
-button[type="submit"]:hover {
-  background-color: #04623C;
-}
-    
-</style>
 <h1>Clothing</h1>
 <h2>Search for clothing</h2>
+{% if message %}
+    <div class="alert alert-danger">{{ message }}</div>
+{% endif %}
 <form action="" method="post" novalidate>
-    {{ form.hidden_tag() }}
-    <p>
-        {{ form.name.label }}<br>
-        {{ form.name(size=32) }}
-    </p>
-    <p>{{ form.submit() }}</p>
+  {{ form.hidden_tag() }}
+  <p>
+      {{ form.name.label }}<br>
+      {{ form.name(size=32) }}
+  </p>
+  <p>{{ form.submit() }}</p>
 </form>
 <br>
 		<div class="image-wrapper">
-			<a href="/clothingSearchCert" target="_blank"><img src="https://hip2save.com/wp-content/uploads/2020/11/Wrangler-Mens-Jeans.jpg"
+			<a href="/clothingSearchCert"><img src="https://hip2save.com/wp-content/uploads/2020/11/Wrangler-Mens-Jeans.jpg"
 				 style="width: 300px; height:200px;"></a>
 			<br>
-			<a href="/clothingSearchCert" target="_blank"><button class="btn success">Search by Certification</button></a>
+			<a href="/clothingSearchCert"><button class="btn success">Search by Certification</button></a>
 		</div>
 		<div class="image-wrapper">
-			<a href="/clothingSearchCertAbout" target="_blank"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQb7W7kJc9OYybDPcGGHDlPqRd6woWJF7aNOQ&usqp=CAU"
+			<a href="/clothingSearchCertAbout"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQb7W7kJc9OYybDPcGGHDlPqRd6woWJF7aNOQ&usqp=CAU"
 				 style="width: 300px; height:200px;"></a>
 			<br>
-			<a href="/clothingSearchCertAbout" target="_blank"><button class="btn success">About Certification</button></a>
+			<a href="/clothingSearchCertAbout"><button class="btn success">Learn about Certification</button></a>
 		</div>
 
 
