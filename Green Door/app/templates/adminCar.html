@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <header>
+    <h1>Admin Dashboard</h1>
+  </header>
+  <main>
+    <h2>Add Car Data</h2>
+    {% if error %}
+  <div class="error">{{ error }}</div>
+    {% endif %}
+    <form method="POST">
+      {{ form.hidden_tag() }}
+      <div>
+        <label for="make">Make:</label>
+        {{ form.make() }}
+      </div>
+      <div>
+        <label for="name">Name:</label>
+        {{ form.name() }}
+      </div>
+      <div>
+        <label for="year">Year:</label>
+        {{ form.year() }}
+      </div>
+      <div>
+        <label for="description">Description:</label>
+        {{ form.description() }}
+      </div>
+      <div>
+        <label for="website_url">Website URL:</label>
+        {{ form.website_url() }}
+      </div>
+      <div>
+        <label for="price">Price:</label>
+        {{ form.price() }}
+      </div>
+      <div>
+        <label for="battery">Battery:</label>
+        {{ form.battery() }}
+      </div>
+      <div>
+        <label for="certification">Certification:</label>
+        {{ form.certification() }}
+      </div>
+      <div>
+        {{ form.submit() }}
+      </div>
+    </form>
+  </main>
+{% endblock %}
