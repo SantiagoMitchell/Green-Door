@@ -1,6 +1,6 @@
 import random
 from app import app
-from flask import render_template, redirect, url_for, request
+from flask import flash, render_template, redirect, url_for, request
 from flask_login import login_user, logout_user, login_required, current_user
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import func
@@ -120,7 +120,7 @@ def clothingSearchCertAbout():
 @app.route('/foodSearchHome', methods=['GET', 'POST'])
 def foodsearchhome():
     form = SearchForm()
-    message = "Please enter a keyword to search." # Set a default message
+    message = "Please enter a keyword to search." 
     if form.validate_on_submit():
         keyword = form.name.data
         # Query all records in the DB table matching the keyword in name or description
